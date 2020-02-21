@@ -1,0 +1,36 @@
+<h2>准备开始</h2>
+
+<p>
+  请选择玩家人数：
+  <select>
+      <option *ngFor="let playernumber of playernumberlist"
+        [selected]="playernumber === selectedPlayernumber"
+        (click)="onSelectPlayernumber(playernumber)">{{playernumber}}</option>
+  </select>
+</p>
+
+<div *ngFor="let player of players">
+    Player {{player.id}}: <input type="text" id="player1name" title="Player name" maxlength="16" value="Player 1" />
+    <select id="player1color" title="Player color">
+        <option style="color: aqua;">Aqua</option>
+        <option style="color: black;">Black</option>
+        <option style="color: blue;">Blue</option>
+        <option style="color: fuchsia;">Fuchsia</option>
+        <option style="color: gray;">Gray</option>
+        <option style="color: green;">Green</option>
+        <option style="color: lime;">Lime</option>
+        <option style="color: maroon;">Maroon</option>
+        <option style="color: navy;">Navy</option>
+        <option style="color: olive;">Olive</option>
+        <option style="color: orange;">Orange</option>
+        <option style="color: purple;">Purple</option>
+        <option style="color: red;">Red</option>
+        <option style="color: silver;">Silver</option>
+        <option style="color: teal;">Teal</option>
+        <option selected="selected" style="color: yellow;">Yellow</option>
+    </select>
+    <select id="player1ai" title="Choose whether this player is controled by a human or by the computer." onclick="document.getElementById('player1name').disabled = this.value !== '0';">
+        <option value="0" selected="selected">Human</option>
+        <option value="1">AI (Test)</option>
+    </select>
+</div>
