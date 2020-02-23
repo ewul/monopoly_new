@@ -1,11 +1,12 @@
-//import { uuid } from "uuid/v4";
 
 export class Player {
-    id: number;
+    id: string;
     name: string;
-    color: number;
+    color: string;
 
-    constructor(){
-        this.id = 0;
+    constructor(id: string, name: string, color: string) {
+        this.id = id;
+        this.name = name;
+        this.color = color;
     }
 }

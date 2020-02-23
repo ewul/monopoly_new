@@ -1,31 +1,37 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Player } from '../player';
+import { Component, OnInit } from '@angular/core';
+import {FormControl, Validators} from '@angular/forms';
+
 import { PlayerService } from '../player.service';
 
 @Component({
   selector: 'app-game-init',
   templateUrl: './game-init.component.html',
-  styleUrls: ['./game-init.component.css']
+  styleUrls: [
+    './game-init.component.css'
+  ]
 })
 export class GameInitComponent implements OnInit {
 
-  playernumberlist = [2, 3, 4, 5, 6, 7, 8];
-  selectedPlayernumber = 3;
+  playernumberlist: string[] = ['2', '3', '4', '5', '6', '7', '8'];
+  selectedPlayernumber: string;
 
-  players: Player[];
+  nameFormControl = new FormControl('', [
+    Validators.required
+  ])
 
-  constructor(private playerService: PlayerService) { }
-
-  ngOnInit(): void {
-    let i=0;
-    while( i++ < this.selectedPlayernumber){
-      this.playerService.generatePlayer();
-    }
-    this.players = this.playerService.players;
+  constructor(
+    public playerService: PlayerService
+  ) {
+    this.selectedPlayernumber = String(playerService.players.length);
   }
 
-  onSelectPlayernumber(playernumber: number): void {
+  ngOnInit(): void {
+
+  }
+
+  onSelectPlayernumber(playernumber: string): void {
     this.selectedPlayernumber = playernumber;
+    this.playerService.changePlayerNumberTo(parseInt(playernumber));
   }
 
 }

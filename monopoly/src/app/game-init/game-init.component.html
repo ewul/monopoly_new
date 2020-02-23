@@ -1,36 +1,53 @@
-<h2>准备开始</h2>
+<div class="title">
+    <h1 class="first">准备开始</h1>
+    <h2 class="first">请选择玩家人数：</h2>
+    <mat-button-toggle-group #group="matButtonToggleGroup" [(value)]="selectedPlayernumber"
+        (change)="onSelectPlayernumber(group.value)">
+        <mat-button-toggle *ngFor="let playernumber of playernumberlist" class="mat-button-toggle"
+            value="{{playernumber}}">
+            {{playernumber}}
+        </mat-button-toggle>
+    </mat-button-toggle-group>
+</div>
+<mat-divider></mat-divider>
 
-<p>
-  请选择玩家人数：
-  <select>
-      <option *ngFor="let playernumber of playernumberlist"
-        [selected]="playernumber === selectedPlayernumber"
-        (click)="onSelectPlayernumber(playernumber)">{{playernumber}}</option>
-  </select>
-</p>
+<div class="form-div">
+    <form>
+        <mat-list>
 
-<div *ngFor="let player of players">
-    Player {{player.id}}: <input type="text" id="player1name" title="Player name" maxlength="16" value="Player 1" />
-    <select id="player1color" title="Player color">
-        <option style="color: aqua;">Aqua</option>
-        <option style="color: black;">Black</option>
-        <option style="color: blue;">Blue</option>
-        <option style="color: fuchsia;">Fuchsia</option>
-        <option style="color: gray;">Gray</option>
-        <option style="color: green;">Green</option>
-        <option style="color: lime;">Lime</option>
-        <option style="color: maroon;">Maroon</option>
-        <option style="color: navy;">Navy</option>
-        <option style="color: olive;">Olive</option>
-        <option style="color: orange;">Orange</option>
-        <option style="color: purple;">Purple</option>
-        <option style="color: red;">Red</option>
-        <option style="color: silver;">Silver</option>
-        <option style="color: teal;">Teal</option>
-        <option selected="selected" style="color: yellow;">Yellow</option>
-    </select>
-    <select id="player1ai" title="Choose whether this player is controled by a human or by the computer." onclick="document.getElementById('player1name').disabled = this.value !== '0';">
-        <option value="0" selected="selected">Human</option>
-        <option value="1">AI (Test)</option>
-    </select>
+            <mat-list-item *ngFor="let player of playerService.players">
+
+                <mat-form-field appearance="legacy">
+                    <mat-label>你的名字</mat-label>
+                    <input matInput value="{{player.name}}">
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                    <mat-label>颜色</mat-label>
+                    <mat-select [(value)]="player.color">
+                        <mat-option style="color: aqua;" value="aqua">水绿色</mat-option>
+                        <mat-option style="color: black;" value="black">黑色</mat-option>
+                        <mat-option style="color: blue;" value="blue">蓝色</mat-option>
+                        <mat-option style="color: fuchsia;" value="fuchsia">紫红色</mat-option>
+                        <mat-option style="color: gray;" value="gray">灰色</mat-option>
+                        <mat-option style="color: green;" value="green">绿色</mat-option>
+                        <mat-option style="color: lime;" value="lime">青柠</mat-option>
+                        <mat-option style="color: maroon;" value="maroon">栗色</mat-option>
+                        <mat-option style="color: navy;" value="navy">海军蓝</mat-option>
+                        <mat-option style="color: olive;" value="olive">橄榄色</mat-option>
+                        <mat-option style="color: orange;" value="orange">橙色</mat-option>
+                        <mat-option style="color: purple;" value="purple">紫色</mat-option>
+                        <mat-option style="color: red;" value="red">红色</mat-option>
+                        <mat-option style="color: silver;" value="silver">银色</mat-option>
+                        <mat-option style="color: teal;" value="teal">青色</mat-option>
+                        <mat-option style="color: yellow;" value="yellow">黄色</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-list-item>
+        </mat-list>
+    </form>
+</div>
+
+<mat-divider></mat-divider>
+<div class="confirm-div">
+    <button mat-raised-button color="accent">开始游戏</button>
 </div>

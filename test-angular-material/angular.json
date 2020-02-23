@@ -1,9 +1,9 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
+  "version": 1, 
   "newProjectRoot": "projects",
   "projects": {
-    "monopoly": {
+    "test-angular-material": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/monopoly",
+            "outputPath": "dist/test-angular-material",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,7 +24,6 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -63,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "monopoly:build"
+            "browserTarget": "test-angular-material:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "monopoly:build:production"
+              "browserTarget": "test-angular-material:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "monopoly:build"
+            "browserTarget": "test-angular-material:build"
           }
         },
         "test": {
@@ -89,7 +88,6 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -112,16 +110,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "monopoly:serve"
+            "devServerTarget": "test-angular-material:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "monopoly:serve:production"
+              "devServerTarget": "test-angular-material:serve:production"
             }
           }
         }
       }
-    }
-  },
-  "defaultProject": "monopoly"
+    }},
+  "defaultProject": "test-angular-material"
 }
